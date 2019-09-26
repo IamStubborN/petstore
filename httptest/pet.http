@@ -1,0 +1,81 @@
+### Add new pet to PetStore
+POST http://localhost:5555/api/v2/pet HTTP/1.1
+Accept: */*
+Content-Type: application/json
+Authorization: {{auth}}
+
+{
+  "id": 3,
+  "category": {
+    "id": 2,
+    "name": "Cat",
+    "price": 35.00
+  },
+  "name": "New pet123",
+  "photo_urls": [
+    "string-try",
+    "string-try"
+  ],
+  "tags": [
+    {
+      "id": 1,
+      "name": "small"
+    }
+  ],
+  "status": "available"
+}
+
+### Update existing pet in PetStore
+PUT http://localhost:5555/api/v2/pet HTTP/1.1
+Accept: */*
+Content-Type: application/json
+Authorization: {{auth}}
+
+{
+  "id": 1,
+  "category": {
+    "id": 2,
+    "name": "Dog",
+    "price": 49.99
+  },
+  "name": "Changed Pet",
+  "photo_urls": [
+    "3",
+    "4"
+  ],
+  "tags": [
+    {
+      "id": 1,
+      "name": "small"
+    }
+  ],
+  "status": "pending"
+}
+
+### Find pets by status
+GET http://localhost:5555/api/v2/pet/findByStatus?status=pending,available HTTP/1.1
+Authorization: {{auth}}
+
+### Get pet by id
+GET http://localhost:5555/api/v2/pet/1
+Authorization: {{auth}}
+
+### Update pet with form data
+POST http://localhost:5555/api/v2/pet/1
+Content-Type: application/x-www-form-urlencoded
+Authorization: {{auth}}
+
+name=Termos&status=pending
+
+### Delete pet by id
+DELETE http://localhost:5555/api/v2/pet/15
+Authorization: {{auth}}
+
+### Upload image url to pet by id
+POST http://localhost:5555/api/v2/pet/1/uploadImage
+Content-Type: application/x-www-form-urlencoded
+Authorization: {{auth}}
+
+images=https://i.ytimg.com/vi/YCaGYUIfdy4/maxresdefault.jpg,https://d17fnq9dkz9hgj.cloudfront.net/uploads/2012/11/152964589-welcome-home-new-cat-632x475.jpg
+
+###

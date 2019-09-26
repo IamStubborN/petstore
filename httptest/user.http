@@ -1,0 +1,92 @@
+### Add new user to PetStore
+POST http://localhost:5555/api/v2/user HTTP/1.1
+Accept: */*
+Content-Type: application/json
+
+{
+  "id": 0,
+  "user_name": "qerqwerafafasfer11",
+  "first_name": "qer",
+  "last_name": "qerer",
+  "email": "test1@grrmail.com",
+  "password": "test0rrtest",
+  "phone": "+3809555555",
+  "user_status_id": 1
+}
+
+### Login user into PetStore
+GET http://localhost:5555/api/v2/user/login?username=qerqwerafafasfer11&password=test0rrtest
+
+> {%
+client.global.set("auth", response.headers.valueOf("Authorization"));
+%}
+
+### Add new users to PetStore
+POST http://localhost:5555/api/v2/user/createWithList HTTP/1.1
+Accept: */*
+Content-Type: application/json
+Authorization: {{auth}}
+
+[
+  {
+  "id": 0,
+  "user_name": "TestUser1",
+  "first_name": "Test1",
+  "last_name": "User1",
+  "email": "test@gmail.com1",
+  "password": "test1test",
+  "phone": "+13809555555",
+  "user_status_id": 1
+},
+  {
+    "id": 0,
+    "user_name": "TestUser2",
+    "first_name": "Test2",
+    "last_name": "User2",
+    "email": "test@gmail.com2",
+    "password": "test2test",
+    "phone": "+23809555555",
+    "user_status_id": 2
+  },
+  {
+    "id": 0,
+    "user_name": "TestUser3",
+    "first_name": "Test3",
+    "last_name": "User3",
+    "email": "test@gmail.com3",
+    "password": "test3test",
+    "phone": "+33809555555",
+    "user_status_id": 3
+  }
+]
+
+### Get user by username
+GET http://localhost:5555/api/v2/user/TestUser3
+Authorization: {{auth}}
+
+### Update user in PetStore
+PUT http://localhost:5555/api/v2/user/TestUser3 HTTP/1.1
+Accept: */*
+Content-Type: application/json
+Authorization: {{auth}}
+
+{
+  "id": 0,
+  "user_name": "TestUser3",
+  "first_name": "qwer3333",
+  "last_name": "User12",
+  "email": "test@gmail.com",
+  "password": "test3test",
+  "phone": "+3809555555111",
+  "user_status_id": 2
+}
+
+### Delete user from PetStore
+DELETE http://localhost:5555/api/v2/user/TestUser2
+Authorization: {{auth}}
+
+### Logout from PetStore
+GET http://localhost:5555/api/v2/user/logout
+Authorization: {{auth}}
+
+###

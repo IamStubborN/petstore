@@ -1,0 +1,42 @@
+api:
+  port: 5555
+  write_timeout: 10     # in seconds
+  read_timeout: 5       # in seconds
+  graceful_timeout: 10  # in seconds
+
+jwt:
+  keys_path: ./
+  ttl: 30m
+
+db:
+  provider: postgres
+  host: localhost
+  port: 5432
+  db_name: petstore_db
+  user: petstore
+  password: test
+  ssl: disable
+  retry: 60               # count, int
+  timeout: 20             # in seconds
+  random_data_count: 1000 # number random data for users, pets, orders. Can be 0.
+
+file_server:
+  endpoint: 127.0.0.1
+  port: 9000
+  access_key: 67W7LAYYVIVSYQSJ2EAE
+  secret_key: Qfcy3hCNYQh39plwCDR956NCC6+HMdSp9Fc5lD++
+  ssl: false
+
+invoice:
+  freq: 24h              # frequency in time.Duration, from minutes to hours
+  generate_time: 12:00   # in UTC
+
+logger:
+  encoding: console      # can be json or console
+  output_paths:
+    - stdout
+    - log.txt
+
+services:
+  - api
+  - invoice

@@ -1,0 +1,14 @@
+.idea
+.DS_Store
+*.exe
+.vagrant
+/_go
+/notes.md
+/ex
+/.vscode
+storage
+vendor
+dbconfig.yml
+private.pem
+public.pem
+log.txt

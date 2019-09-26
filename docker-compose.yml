@@ -1,0 +1,37 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:alpine
+    container_name: pet_db
+    environment:
+      POSTGRES_USER: petstore
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: petstore_db
+    ports:
+      - 5432:5432
+
+  minio:
+    container_name: pet_minio
+    image: minio/minio:latest
+    ports:
+      - 9000:9000
+    environment:
+      MINIO_ACCESS_KEY: superAccess
+      MINIO_SECRET_KEY: superSecret
+    command: minio server /minio/data
+
+  petstore:
+    container_name: pet_go
+    build: .
+    environment:
+      POSTGRES_HOST: db
+      MINIO_HOST: minio
+      MINIO_PORT: 9000
+      MINIO_ACCESS_KEY: superAccess
+      MINIO_SECRET_KEY: superSecret
+    ports:
+      - 5555:5555
+    depends_on:
+      - db
+      - minio

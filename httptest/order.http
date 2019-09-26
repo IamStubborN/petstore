@@ -1,0 +1,29 @@
+### Get pet status and quantity
+GET http://localhost:5555/api/v2/store/inventory HTTP/1.1
+Authorization: {{auth}}
+
+### Place order in PetStore
+POST http://localhost:5555/api/v2/store/order HTTP/1.1
+Accept: */*
+Content-Type: application/json
+Authorization: {{auth}}
+
+{
+  "id": 2,
+  "pet_id": 2,
+  "user_id": 2,
+  "quantity": 12,
+  "ship_date": "2019-08-17T20:30:39.563Z",
+  "status": "placed",
+  "complete": false
+}
+
+### Get order by id from PetStore
+GET http://localhost:5555/api/v2/store/order/2 HTTP/1.1
+Authorization: {{auth}}
+
+### Delete order by id from PetStore
+DELETE http://localhost:5555/api/v2/store/order/3 HTTP/1.1
+Authorization: {{auth}}
+
+###

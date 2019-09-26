@@ -1,0 +1,8 @@
+.git
+.idea
+dockerfile
+dbconfig.yml
+storage
+private.pem
+public.pem
+log.txt
