@@ -23,7 +23,7 @@ require (
 	github.com/stretchr/testify v1.3.0
 	github.com/ziutek/mymysql v1.5.4 // indirect
 	go.uber.org/zap v1.10.0
-	golang.org/x/crypto v0.0.0-20190820162420-60c769a6c586
+	golang.org/x/crypto v0.1.0
 	gopkg.in/gorp.v1 v1.7.2 // indirect
 	gopkg.in/validator.v2 v2.0.0-20190827175613-1a84e0480e5b
 )
